@@ -71,8 +71,15 @@ app.get('/note/send/:username/:data',(req, res) => {
     const username = req.params.username;
     const data = req.params.data;
 
-    const jsonData = fs.readFileSync(ROOT_DIR+`note.json`, 'utf-8');
-    let note = JSON.parse(jsonData);
+
+    let note = [];
+    try {
+        const jsonData = fs.readFileSync(ROOT_DIR+`note.json`, 'utf-8');
+        note = JSON.parse(jsonData);
+    } catch (e) {
+        
+    }
+
     note = [...note,{sender: username, data, id:Date.now()}];
     try {
         fs.writeFileSync(

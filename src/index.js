@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 
-const ROOT_DIR = "C:\\Users\\user\\Desktop\\react-note\\backend\\database\\"
+const ROOT_DIR = "./"
 //signup
 app.get('/user/signup/:username/:password', (req, res) =>{
     const username = req.params.username;
